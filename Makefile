@@ -9,21 +9,25 @@ BAUER_PATH = /usr/lib
 
 NAME=fast-cp
 
-INC=-I/opt/gtest/include -I../inc -Isrc -I$(DEPINC) -L$(DEPLIB) -L$(BAUERLIB)
+INC=-I/opt/gtest/include -Iinc/util -Iinc -Isrc/util -Isrc -I$(DEPINC) -L$(DEPLIB) -L$(BAUERLIB)
 
 FLAGS=-std=c++11 -pthread
-OBJS=$(OBJ)/main.o
+OBJS=$(OBJ)/main.o $(OBJ)/arg_parser.o
 
-build: dep $(OBJS)
+build: clean dep $(OBJS)
 		$(CC) -o $(BIN)/$(NAME) $(OBJS) $(INC) $(FLAGS)
 
 dep:
 		mkdir -p obj
 		mkdir -p bin
 
-#### building test source
+#### building 
+
 $(OBJ)/main.o:
 		$(CC) -o $(OBJ)/main.o -c $(SRC)/main.cpp $(INC) $(FLAGS)
+
+$(OBJ)/arg_parser.o:
+		$(CC) -o $(OBJ)/arg_parser.o -c $(SRC)/util/arg_parser.cpp $(INC) $(FLAGS)
 
 clean:
 		rm -rf $(OBJ) $(BIN)/$(NAME)
