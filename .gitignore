@@ -26,3 +26,7 @@
 *.exe
 *.out
 *.app
+
+# Ignoring obj and bin
+bin/
+obj/
