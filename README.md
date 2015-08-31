@@ -8,22 +8,26 @@ fast-cp is made to send large ammounts of data accross machines.
 
 ### Command Line
 
-#### Server
-```
-fast-cp copy --from ~/Documents/my_giant_photo.png --to ip_or_address.com:/photos/my_giant_photo.png
-fast-cp copy --from ~Documents/my_photos/ --to ip_or_address:/photos/
-```
-
-#### Client
+#### Sender 
 
 ```
-fast-cp --wait-files
+fast-cp copy --from ~/Documents/my_giant_photo.png --to 10.0.10.1:9090
+fast-cp copy --from ~/Documents/my_photos/ --to 10.0.10.1:9090
 ```
+
+#### Receiver 
+
+```
+fast-cp wait --port 9090 --save-at ~/Documents/photos/my_giant_photo.png
+fast-cp wait --port 9090 --save-at ~/Documents/photos/
+```
+
 ### Replicating through several machines
 
 This command allows machines to receive the files and replicate them. When a machines receives the files, it chooses one from the list and send the files. This process is repeated until every machine of the list get the files.
 
-#### Server
+#### Master 
+
 ```
 fast-cp replicate --from ~/Documents/some_imporant_origin/ --to list_of_ips.txt
 ```
