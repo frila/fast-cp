@@ -6,9 +6,14 @@
 #include <unistd.h>
 #include <getopt.h>
 
-namespace tools {
+namespace fcp {
   class arg_parser {
-  
+  private:
+    static void print_usage();
+    static void print_help();
+
+  public:
+    static void validate(int argc, char* argv[]);
   };
 }
 
