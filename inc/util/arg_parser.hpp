@@ -9,8 +9,13 @@
 namespace fcp {
   class arg_parser {
   private:
+    static const std::string com_copy;
+    static const std::string com_replicate;
+    static const int command = 1; 
+
     static void print_usage();
     static void print_help();
+    static void get_command(std::string command);
 
   public:
     static void validate(int argc, char* argv[]);
