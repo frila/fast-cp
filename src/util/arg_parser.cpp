@@ -1,8 +1,6 @@
 #include "arg_parser.hpp"
 
-void fcp::arg_parser::print_help() {
-  fcp::output::print_usage();
-}
+const int command_position = 1;
 
 void fcp::arg_parser::validate(int argc, char* argv[]) {
   if(argc < 2) {
@@ -10,6 +8,4 @@ void fcp::arg_parser::validate(int argc, char* argv[]) {
   }
 }
 
-void fcp::arg_parser::get_command(std::string command) {
-      
-}
+
