@@ -5,6 +5,7 @@
 #include <iostream>
 #include <unistd.h>
 #include <getopt.h>
+#include "output.hpp"
 
 namespace fcp {
   class arg_parser {
@@ -13,7 +14,7 @@ namespace fcp {
     static const std::string com_replicate;
     static const int command = 1; 
 
-    static void print_usage();
+    //static void print_usage();
     static void print_help();
     static void get_command(std::string command);
 
