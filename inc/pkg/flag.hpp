@@ -14,9 +14,9 @@ namespace fcp {
     std::map<std::string, std::string>args;
      
     public:
-    flag(std::string name, std::map<std::string, std::string>args); 
-    virtual void exec() = 0;
-    virtual void print_usage() = 0;
+    flag() {} 
+    void exec() {};
+    virtual void print_usage() { std::cout << "foooi" << std::endl; }
   };
 }
 #endif

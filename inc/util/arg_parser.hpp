@@ -6,6 +6,7 @@
 #include <getopt.h>
 #include "output.hpp"
 #include "flag.hpp"
+#include "flag_mapper.hpp"
 
 namespace fcp {
   class arg_parser {

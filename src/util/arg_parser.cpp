@@ -8,8 +8,8 @@ void fcp::arg_parser::validate(int argc, char* argv[]) {
     output::print_usage();
   }
 
-  std::cout << flag(argv) << std::endl;
-    
+  std::string flag_name = flag(argv);
+  fcp::flag* flag = flag_mapper::flag_by_name(flag_name);
 }
 
 bool fcp::arg_parser::no_flag(int argc) {
@@ -34,4 +34,6 @@ fcp::flag_args flag_arguments(int argc, char* argv[]) {
       }
     }
   }
+
+  return arguments;
 }

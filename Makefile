@@ -9,14 +9,12 @@ BAUER_PATH = /usr/lib
 
 NAME=fast-cp
 
-INC=-I/opt/gtest/include -Iinc/util -Iinc/pkg -Iinc -Isrc/util -Isrc/pkg -Isrc -I$(DEPINC) -L$(DEPLIB) -L$(BAUERLIB)
-
+INC=-I/opt/gtest/include -Iinc/util -Iinc/pkg -Iinc -Isrc/util -Isrc/pkg -Isrc 
 FLAGS=-std=c++11 -pthread
-OBJS=$(OBJ)/main.o $(OBJ)/arg_parser.o $(OBJ)/flag.o $(OBJ)/output.o
+OBJS=$(OBJ)/main.o $(OBJ)/arg_parser.o $(OBJ)/flag_mapper.o $(OBJ)/flag_copy.o $(OBJ)/flag.o $(OBJ)/output.o
 
 build: clean dep $(OBJS)
-		$(CC) -o $(BIN)/$(NAME) $(OBJS) $(INC) $(FLAGS)
-
+		$(CC) -o $(BIN)/$(NAME) $(FLAGS) $(OBJS) $(INC) 
 dep:
 		mkdir -p obj
 		mkdir -p bin
@@ -30,6 +28,13 @@ $(OBJ)/arg_parser.o:
 
 $(OBJ)/flag.o:
 		$(CC) -o $(OBJ)/flag.o -c $(SRC)/pkg/flag.cpp $(INC) $(FLAGS)
+
+$(OBJ)/flag_mapper.o:
+		$(CC) $(FLAGS) -o $(OBJ)/flag_mapper.o -c $(SRC)/pkg/flag_mapper.cpp $(INC) 
+		
+$(OBJ)/flag_copy.o:
+		$(CC) -o $(OBJ)/flag_copy.o -c $(SRC)/pkg/flag_copy.cpp $(INC) $(FLAGS)
+
 
 $(OBJ)/output.o:
 		$(CC) -o $(OBJ)/output.o -c $(SRC)/util/output.cpp $(INC) $(FLAGS)
