@@ -5,6 +5,8 @@ std::vector<std::string> accepted_options = {
   "--from",
   "-t",
   "--to",
+  "-r",
+  "--recursive",
   "-h",
   "--help"
 };
@@ -29,11 +31,7 @@ bool fcp::flag_copy::validate_arguments() {
   if(args.empty()) {
     print_usage(); 
   }
-}
 
-void fcp::flag_copy::exec() {
-  validate_arguments();
-  
   for(std::map<std::string, std::string>::iterator iter = args.begin(); iter != args.end(); ++iter) {
     std::string opt = iter->first;
 
@@ -44,4 +42,8 @@ void fcp::flag_copy::exec() {
 bool fcp::flag_copy::is_valid_option(std::string option) {
   if(std::find(accepted_options.begin(), accepted_options.end(), option) != accepted_options.end()) return true;
   return false;
+}
+
+void fcp::flag_copy::exec() {
+  validate_arguments();
 }
