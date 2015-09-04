@@ -23,14 +23,8 @@ void fcp::flag_copy::print_usage() {
   std::cout << "--help=false \t\t\tPrint this help" << std::endl;
 }
 
-void fcp::flag_copy::set_arguments(std::map<std::string, std::string> _arguments) {
-  args = _arguments;
-}
-
 bool fcp::flag_copy::validate_arguments() {
   if(args.empty()) {
-    std::cout << "tell me what to do!" << std::endl;
-    std::cout << "" << std::endl;
     return false;
   }
 
@@ -38,37 +32,15 @@ bool fcp::flag_copy::validate_arguments() {
     std::string opt = iter->first;
 
     if(!is_valid_option(opt)) { 
-      std::cout << "don't know how to execute command " + opt << std::endl;
-      std::cout << "" << std::endl;
       return false;
     }
   }
 
-  //if(!is_present("--from") && !is_present("-f")) {
-  //  args["--from"] = "./"; 
-  //}
-
   if(!is_present("--to") && !is_present("-t")) {
-    std::cout << "--to is mandatory!" << std::endl;
-    std::cout << "" << std::endl;
     return false; 
   }
 
   return true;
-}
-
-bool fcp::flag_copy::is_valid_option(std::string option) {
-  if(std::find(accepted_options.begin(), accepted_options.end(), option) != accepted_options.end()) return true;
-  return false;
-}
-
-std::string fcp::flag_copy::get_value(std::string opt) {
-  return args[opt];
-}
-
-bool fcp::flag_copy::is_present(std::string opt) {
-  if(args.find(opt) != args.end()) return true;
-  return false;
 }
 
 void fcp::flag_copy::exec() {
