@@ -15,7 +15,7 @@ namespace fcp {
      
     public:
     flag() {} 
-    void exec() {};
+    virtual void exec() {};
     virtual void print_usage() { std::cout << "foooi" << std::endl; }
   };
 }

@@ -3,13 +3,19 @@
 const int flag_position = 1;
 const int arguments_position = 2;
 
-void fcp::arg_parser::validate(int argc, char* argv[]) {
+fcp::parsed_flag* fcp::arg_parser::validate(int argc, char* argv[]) {
   if(no_flag(argc)) {
     output::print_usage();
   }
 
   std::string flag_name = flag(argv);
-  fcp::flag* flag = flag_mapper::flag_by_name(flag_name);
+  std::map<std::string, std::string> args = flag_arguments(argc, argv);
+  
+  fcp::parsed_flag* pflag = new parsed_flag();
+  pflag->name = flag_name;
+  pflag->args = args;
+
+  return pflag; 
 }
 
 bool fcp::arg_parser::no_flag(int argc) {
@@ -20,7 +26,7 @@ fcp::flag_name fcp::arg_parser::flag(char* argv[]) {
   return std::string(argv[flag_position]);
 }
 
-fcp::flag_args flag_arguments(int argc, char* argv[]) {
+fcp::flag_args fcp::arg_parser::flag_arguments(int argc, char* argv[]) {
   std::map<std::string, std::string> arguments;
 
   for(int i = arguments_position; i < argc; i++) {
