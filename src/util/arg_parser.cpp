@@ -31,8 +31,9 @@ fcp::flag_args fcp::arg_parser::flag_arguments(int argc, char* argv[]) {
 
   for(int i = arguments_position; i < argc; i++) {
     std::string arg(argv[i]);
-    std::string next_arg(argv[i+1]);
-    if(arg.at(0) == '-') { 
+    std::string next_arg = get_next_arg(argv[i+1]);
+
+    if(next_arg.size() > 0 && arg.at(0) == '-') { 
       if(next_arg.at(0) != '-') {
         arguments.insert(std::pair<std::string, std::string>(arg, next_arg));
       } else {
@@ -42,4 +43,14 @@ fcp::flag_args fcp::arg_parser::flag_arguments(int argc, char* argv[]) {
   }
 
   return arguments;
+}
+
+std::string fcp::arg_parser::get_next_arg(char* arg) {
+  if(arg != NULL) {
+    std::string narg(arg);
+    return narg;   
+  }
+
+  std::string earg("");
+  return earg; 
 }

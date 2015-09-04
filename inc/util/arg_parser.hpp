@@ -20,7 +20,7 @@ namespace fcp {
     static bool no_flag(int argc);
     static flag_name flag(char* argv[]);
     static flag_args flag_arguments(int argc, char* argv[]);
-
+    static std::string get_next_arg(char* narg);
   public:
     static parsed_flag* validate(int argc, char* argv[]);
   };
