@@ -2,15 +2,16 @@
 #define __FLAG_COPY__
 
 #include "flag.hpp"
+#include <algorithm>
 
 namespace fcp {
   class flag_copy : public flag {
     private:
-      std::map<std::string, std::string> arguments;
+      bool is_valid_option(std::string option);
       bool validate_arguments();
     public:
-      flag_copy() {}
       void set_arguments(std::map<std::string, std::string> arguments);
+      flag_copy() {}
       void exec();
       void print_usage();
   };

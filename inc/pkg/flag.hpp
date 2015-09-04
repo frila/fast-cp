@@ -10,13 +10,18 @@ namespace fcp {
 
   class flag {
     protected:
-    std::string name;
-    std::map<std::string, std::string>args;
-     
+      std::string name;
+      std::map<std::string, std::string>args;
+      virtual bool is_valid_option(std::string option) {}
+      virtual bool validate_arguments() {}
     public:
-    flag() {} 
-    virtual void exec() {};
-    virtual void print_usage() { std::cout << "foooi" << std::endl; }
+      flag() {} 
+      void set_name(std::string name);
+      virtual void set_arguments(std::map<std::string, std::string> arguments) {
+        args = arguments; 
+      }
+      virtual void exec() {};
+      virtual void print_usage() {}
   };
 }
 #endif
