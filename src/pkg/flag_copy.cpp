@@ -1,6 +1,6 @@
 #include "flag_copy.hpp"
 
-std::vector<std::string>accepted_options = {
+std::vector<std::string> accepted_options = {
   "-f",
   "--from",
   "-t",
@@ -33,8 +33,15 @@ bool fcp::flag_copy::validate_arguments() {
 
 void fcp::flag_copy::exec() {
   validate_arguments();
+  
+  for(std::map<std::string, std::string>::iterator iter = args.begin(); iter != args.end(); ++iter) {
+    std::string opt = iter->first;
+
+    if(!is_valid_option(opt)) print_usage();
+  }
 }
 
 bool fcp::flag_copy::is_valid_option(std::string option) {
-
+  if(std::find(accepted_options.begin(), accepted_options.end(), option) != accepted_options.end()) return true;
+  return false;
 }
