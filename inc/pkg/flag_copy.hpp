@@ -9,6 +9,8 @@ namespace fcp {
     private:
       bool is_valid_option(std::string option);
       bool validate_arguments();
+      std::string get_value(std::string opt);
+      bool is_present(std::string opt);
     public:
       void set_arguments(std::map<std::string, std::string> arguments);
       flag_copy() {}
