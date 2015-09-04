@@ -30,3 +30,7 @@
 # Ignoring obj and bin
 bin/
 obj/
+
+# Ignoring vim .swp
+*.swp
+*.swo
