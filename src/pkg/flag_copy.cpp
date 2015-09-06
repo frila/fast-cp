@@ -44,5 +44,6 @@ bool fcp::flag_copy::validate_arguments() {
 }
 
 void fcp::flag_copy::exec() {
+  opt.validate_options();
   if(!validate_arguments()) print_usage();
 }

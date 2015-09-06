@@ -2,12 +2,14 @@
 #define __FLAG_COPY__
 
 #include "flag.hpp"
-#include <algorithm>
+#include "copy_options.hpp"
 
 namespace fcp {
   class flag_copy : public flag {
     private:
+      copy_options opt;
       bool validate_arguments();
+      std::string get_file_to_send();
     public:
       flag_copy() {}
       void exec();
