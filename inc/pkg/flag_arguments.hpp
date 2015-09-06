@@ -3,12 +3,15 @@
 
 #include <iostream>
 #include <vector>
+#include <algorithm>
+#include <map>
 #include "flag_option.hpp"
 
 namespace fcp {
   class flag_arguments {
-  private:
-    const std::vector<flag_option>acceptable_options;
+  protected:
+    bool is_valid_option(std::string opt);
+    std::vector<flag_option>accepted_options;
   public:
     virtual bool validate_options() {}
   };

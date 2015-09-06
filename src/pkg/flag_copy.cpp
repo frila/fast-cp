@@ -1,15 +1,15 @@
 #include "flag_copy.hpp"
 
-std::vector<std::string> accepted_options = {
-  "-f",
-  "--from",
-  "-t",
-  "--to",
-  "-r",
-  "--recursive",
-  "-h",
-  "--help"
-};
+//std::vector<std::string> accepted_options = {
+//  "-f",
+//  "--from",
+//  "-t",
+//  "--to",
+//  "-r",
+//  "--recursive",
+//  "-h",
+//  "--help"
+//};
 
 void fcp::flag_copy::print_usage() {
   std::cout << "Usage: fast-cp copy [OPTIONS]" << std::endl;
@@ -44,6 +44,5 @@ bool fcp::flag_copy::validate_arguments() {
 }
 
 void fcp::flag_copy::exec() {
-  opt.validate_options();
-  if(!validate_arguments()) print_usage();
+  if(!opt.validate_options(args)) print_usage();
 }
