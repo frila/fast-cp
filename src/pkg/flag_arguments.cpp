@@ -8,3 +8,6 @@ bool fcp::flag_arguments::is_valid_option(std::string option) {
   return false;
 }
 
+void fcp::flag_arguments::set_arguments(std::map<std::string, std::string>_args) {
+  args = _args; 
+}

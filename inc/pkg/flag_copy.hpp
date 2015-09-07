@@ -11,7 +11,8 @@ namespace fcp {
       bool validate_arguments();
       std::string get_file_to_send();
     public:
-      flag_copy() {}
+      flag_copy(): flag() {}
+      void set_arguments(std::map<std::string, std::string> arguments);
       void exec();
       void print_usage();
   };

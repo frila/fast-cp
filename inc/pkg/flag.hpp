@@ -25,7 +25,7 @@ namespace fcp {
     public:
       flag() {} 
       void set_name(std::string name);
-      void set_arguments(std::map<std::string, std::string> arguments);
+      virtual void set_arguments(std::map<std::string, std::string> arguments);
 
       virtual void exec() {};
       virtual void print_usage() {}

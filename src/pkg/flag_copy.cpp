@@ -1,16 +1,5 @@
 #include "flag_copy.hpp"
 
-//std::vector<std::string> accepted_options = {
-//  "-f",
-//  "--from",
-//  "-t",
-//  "--to",
-//  "-r",
-//  "--recursive",
-//  "-h",
-//  "--help"
-//};
-
 void fcp::flag_copy::print_usage() {
   std::cout << "Usage: fast-cp copy [OPTIONS]" << std::endl;
   std::cout << "" << std::endl;
@@ -22,6 +11,12 @@ void fcp::flag_copy::print_usage() {
   std::cout << "-r --recursive=false \t\tSpecify if the copy is recursive or not" << std::endl;
   std::cout << "--help=false \t\t\tPrint this help" << std::endl;
 }
+
+void fcp::flag_copy::set_arguments(std::map<std::string, std::string> arguments) {
+  fcp::flag::set_arguments(arguments); 
+  opt.set_arguments(arguments);
+}
+
 
 bool fcp::flag_copy::validate_arguments() {
   if(args.empty()) {
@@ -44,5 +39,5 @@ bool fcp::flag_copy::validate_arguments() {
 }
 
 void fcp::flag_copy::exec() {
-  if(!opt.validate_options(args)) print_usage();
+  if(!opt.validate_options()) print_usage();
 }

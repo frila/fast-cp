@@ -16,7 +16,13 @@ namespace fcp {
         fcp::flag_option("--help", "-h", false)
       }; 
     };
-    bool validate_options(std::map<std::string, std::string> args); 
+
+    bool validate_options(); 
+    std::string get_path();
+    std::string get_destination_ip();
+    std::string get_destination_port();
+    bool is_recursive();
+    bool print_help();
   };
 }
 #endif
