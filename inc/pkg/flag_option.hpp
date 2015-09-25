@@ -8,6 +8,7 @@ namespace fcp {
     std::string name;
     std::string alias;
     bool is_mandatory;
+    std::string value;
 
     flag_option(std::string n, std::string a, bool i): name(n), alias(a), is_mandatory(i) {} 
   } flag_option;

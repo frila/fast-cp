@@ -13,9 +13,10 @@ namespace fcp {
     std::map<std::string, std::string>args;
     bool is_valid_option(std::string opt);
     std::vector<flag_option>accepted_options;
+    virtual bool define_values(std::string opt, std::string val);
   public:
-    void set_arguments(std::map<std::string, std::string>args);
-    virtual bool validate_options() {}
+    void set_arguments(std::map<std::string, std::string> args);
+    void validate_arguments(std::map<std::string, std::string>args);
   };
 }
 #endif
