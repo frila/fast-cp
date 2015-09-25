@@ -16,5 +16,5 @@ bool fcp::copy_options::validate_options() {
 }
 
 std::string fcp::copy_options::get_path() {
-    
+  return value_of("--from"); 
 }

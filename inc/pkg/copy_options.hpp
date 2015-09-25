@@ -11,11 +11,11 @@ namespace fcp {
     copy_options() {
       accepted_options = {
         { "--from", fcp::flag_option("--from", "-f", true) },
-        { "-f", fcp::flag_option("--from", "-f", true) },
-        { "--to", fcp::flag_option("--from", "-f", true) },
-        { "-t", fcp::flag_option("--from", "-f", true) },
-        { "--recursive", fcp::flag_option("--from", "-f", true) },
-        { "-r", fcp::flag_option("--from", "-f", true) },
+        { "-f", fcp::flag_option("-f", "--from", true) },
+        { "--to", fcp::flag_option("-to", "-t", true) },
+        { "-t", fcp::flag_option("-t", "--to", true) },
+        { "--recursive", fcp::flag_option("--recursive", "-r", false) },
+        { "-r", fcp::flag_option("-r", "--recursive", false) },
       }; 
     };
 
