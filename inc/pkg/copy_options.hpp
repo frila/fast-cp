@@ -10,10 +10,12 @@ namespace fcp {
   public:
     copy_options() {
       accepted_options = {
-        fcp::flag_option("--from", "-f", true),
-        fcp::flag_option("--to", "-t", true),
-        fcp::flag_option("--recursive", "-r", false),
-        fcp::flag_option("--help", "-h", false)
+        { "--from", fcp::flag_option("--from", "-f", true) },
+        { "-f", fcp::flag_option("--from", "-f", true) },
+        { "--to", fcp::flag_option("--from", "-f", true) },
+        { "-t", fcp::flag_option("--from", "-f", true) },
+        { "--recursive", fcp::flag_option("--from", "-f", true) },
+        { "-r", fcp::flag_option("--from", "-f", true) },
       }; 
     };
 
