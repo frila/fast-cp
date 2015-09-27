@@ -11,10 +11,11 @@ NAME=fast-cp
 
 INC=-I/opt/gtest/include -Iinc/util -Iinc/pkg -Iinc -Isrc/util -Isrc/pkg -Isrc 
 FLAGS=-std=c++11 -pthread
+
 OBJS=$(OBJ)/main.o $(OBJ)/arg_parser.o $(OBJ)/flag_mapper.o $(OBJ)/flag_copy.o $(OBJ)/flag_option.o $(OBJ)/flag_arguments.o $(OBJ)/copy_options.o $(OBJ)/flag.o $(OBJ)/output.o
 
 build: clean dep $(OBJS)
-		$(CC) -o $(BIN)/$(NAME) $(FLAGS) $(OBJS) $(INC) 
+		$(CC) -o $(BIN)/$(NAME) $(FLAGS) $(OBJS) $(INC) -lbauer
 dep:
 		mkdir -p obj
 		mkdir -p bin
