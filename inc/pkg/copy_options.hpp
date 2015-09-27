@@ -2,6 +2,7 @@
 #define __COPY_OPTIONS__
 
 #include <iostream>
+#include <cstring>
 #include "flag_arguments.hpp"
 
 namespace fcp {
@@ -22,7 +23,7 @@ namespace fcp {
     bool validate_options(); 
     std::string get_path();
     std::string get_destination_ip();
-    std::string get_destination_port();
+    short get_destination_port();
     bool is_recursive();
     bool print_help();
   };

@@ -1,4 +1,5 @@
 #include "flag_copy.hpp"
+#include "bauer.h"
 
 void fcp::flag_copy::print_usage() {
   std::cout << "Usage: fast-cp copy [OPTIONS]" << std::endl;
@@ -41,4 +42,11 @@ bool fcp::flag_copy::validate_arguments() {
 void fcp::flag_copy::exec() {
   if(!opt.validate_options()) print_usage();
   opt.get_path();
+  std::string ip = opt.get_destination_ip();
+  short port = opt.get_destination_port();
+
+  bauer::bauer_node server(bauer::tcp_socket(), ip, port);
+  bauer::bauer_tcp_clnt client;
+  std::cout << "Connecting to " << ip << ":" << port << std::endl;
+  client.connect(server);
 }

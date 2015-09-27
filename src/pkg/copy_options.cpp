@@ -18,3 +18,35 @@ bool fcp::copy_options::validate_options() {
 std::string fcp::copy_options::get_path() {
   return value_of("--from"); 
 }
+
+std::string fcp::copy_options::get_destination_ip() {
+  std::string dest = value_of("--to");
+
+  char* dest_str = new char[dest.size() + 1];
+  std::copy(dest.begin(), dest.end(), dest_str);
+  dest_str[dest.size()] = '\0';
+
+  char* ip = std::strtok(dest_str, ":");
+  short port = atoi(std::strtok(NULL, " "));
+
+  std::string server_ip(ip);
+  delete[] dest_str;
+ 
+  return server_ip;
+}
+
+short fcp::copy_options::get_destination_port() {
+  std::string dest = value_of("--to");
+
+  char* dest_str = new char[dest.size() + 1];
+  std::copy(dest.begin(), dest.end(), dest_str);
+  dest_str[dest.size()] = '\0';
+
+  char* ip = std::strtok(dest_str, ":");
+  short port = atoi(std::strtok(NULL, " "));
+
+  std::string server_ip(ip);
+  delete[] dest_str;
+ 
+  return port;
+}
