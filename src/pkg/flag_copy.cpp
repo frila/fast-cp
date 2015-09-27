@@ -41,12 +41,29 @@ bool fcp::flag_copy::validate_arguments() {
 
 void fcp::flag_copy::exec() {
   if(!opt.validate_options()) print_usage();
-  opt.get_path();
+
+  std::string path = opt.get_path();
+
   std::string ip = opt.get_destination_ip();
   short port = opt.get_destination_port();
-
+  
   bauer::bauer_node server(bauer::tcp_socket(), ip, port);
   bauer::bauer_tcp_clnt client;
-  std::cout << "Connecting to " << ip << ":" << port << std::endl;
-  client.connect(server);
+  std::cout << "Connecting to " << ip << ":" << port << "\t\t";
+
+  try {
+    client.connect(server);
+  } catch(bauer::bauer_socket_exception) {
+    std::cout << "ERROR" << std::endl;
+    std::cout << "Can't connect to server!" << std::endl; 
+    exit(1);
+  }
+
+  std::cout << "Opening " << path << "\t\t";
+  try {
+    bauer::bauer_tcp_data_file file(path);
+    client.send(file);
+  } catch(bauer::bauer_exception) {
+    std::cout << "ERROR" << std::endl; 
+  }
 }
