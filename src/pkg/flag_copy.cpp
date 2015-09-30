@@ -65,5 +65,6 @@ void fcp::flag_copy::exec() {
     client.send(file);
   } catch(bauer::bauer_exception) {
     std::cout << "ERROR" << std::endl; 
+    exit(1);
   }
 }
