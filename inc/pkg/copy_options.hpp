@@ -11,8 +11,8 @@ namespace fcp {
   public:
     copy_options() {
       accepted_options = {
-        { "--from", fcp::flag_option("-f", true) },
-        { "-f", fcp::flag_option("--from", true) },
+        { "--file", fcp::flag_option("-f", true) },
+        { "-f", fcp::flag_option("--file", true) },
         { "--to", fcp::flag_option("-t", true) },
         { "-t", fcp::flag_option("--to", true) },
         { "--recursive", fcp::flag_option("-r", false) },

@@ -14,8 +14,8 @@ namespace fcp {
       accepted_options = {
         { "--port", fcp::flag_option("-p", true) },
         { "-p", fcp::flag_option("--port", true) },
-        { "-d", fcp::flag_option("--dest", false) },
-        { "--dest", fcp::flag_option("-d", false) }
+        { "-f", fcp::flag_option("--file", false) },
+        { "--file", fcp::flag_option("-f", false) }
       }; 
     };
 

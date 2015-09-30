@@ -62,6 +62,9 @@ void fcp::flag_copy::exec() {
   std::cout << "Opening " << path << "\t\t";
   try {
     bauer::bauer_tcp_data_file file(path);
+    bauer::bauer_tcp_data_string pathdata = path;
+    client.send(pathdata);
+
     client.send(file);
   } catch(bauer::bauer_exception) {
     std::cout << "ERROR" << std::endl; 

@@ -16,7 +16,7 @@ bool fcp::copy_options::validate_options() {
 }
 
 std::string fcp::copy_options::get_path() {
-  return value_of("--from"); 
+  return value_of("--file"); 
 }
 
 std::string fcp::copy_options::get_destination_ip() {
@@ -35,6 +35,7 @@ std::string fcp::copy_options::get_destination_ip() {
   return server_ip;
 }
 
+//TODO: Colocar porta DEFAULT
 short fcp::copy_options::get_destination_port() {
   std::string dest = value_of("--to");
 

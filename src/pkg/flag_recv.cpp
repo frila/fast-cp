@@ -1,9 +1,14 @@
 #include "flag_recv.hpp"
 #include "bauer.h"
 
+//TODO: TESTE de arquivos enormes
 void server_exec(bauer::bauer_tcp_channel channel) {
   fcp::flag_recv *flagrecv = (fcp::flag_recv *) channel.data;
-  bauer::bauer_tcp_data_file file(flagrecv->get_destination());
+  bauer::bauer_tcp_data_string filename;
+
+  //TODO: pegar somente o nome do arquivo
+  channel.recv(filename);
+  bauer::bauer_tcp_data_file file(filename.get());
   channel.recv(file);
 }
 
@@ -21,7 +26,7 @@ void fcp::flag_recv::exec() {
   
   bauer::bauer_task_serial tasker(server_exec);
 
-  bauer::bauer_node server_node(bauer::tcp_socket() ,"127.0.0.1", opt.get_port());
+  bauer::bauer_node server_node(bauer::tcp_socket(), "127.0.0.1", opt.get_port());
   bauer::bauer_tcp_svr server(tasker, server_node);
   server.set_data(this);
   server.start();
