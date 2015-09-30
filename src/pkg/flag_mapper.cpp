@@ -1,7 +1,7 @@
 #include "flag_mapper.hpp"
 
 std::map<std::string, fcp::flag*> fcp::flag_mapper::flags = {
-  { "copy", new fcp::flag_copy() }
+  { "send", new fcp::flag_copy() }
 };
 
 fcp::flag* fcp::flag_mapper::flag_by_name(std::string name) {
