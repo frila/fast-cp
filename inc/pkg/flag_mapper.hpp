@@ -3,7 +3,6 @@
 #include <iostream>
 #include <map>
 #include "flag.hpp"
-#include "flag_copy.hpp"
 
 namespace fcp {
   class flag_mapper {

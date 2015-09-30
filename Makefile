@@ -12,7 +12,7 @@ NAME=fast-cp
 INC=-I/opt/gtest/include -Iinc/util -Iinc/pkg -Iinc -Isrc/util -Isrc/pkg -Isrc 
 FLAGS=-std=c++11 -pthread
 
-OBJS=$(OBJ)/main.o $(OBJ)/arg_parser.o $(OBJ)/flag_mapper.o $(OBJ)/flag_copy.o $(OBJ)/flag_option.o $(OBJ)/flag_arguments.o $(OBJ)/copy_options.o $(OBJ)/flag.o $(OBJ)/output.o
+OBJS=$(OBJ)/main.o $(OBJ)/arg_parser.o $(OBJ)/flag_mapper.o $(OBJ)/flag_copy.o $(OBJ)/flag_option.o $(OBJ)/flag_arguments.o $(OBJ)/copy_options.o $(OBJ)/flag.o $(OBJ)/output.o $(OBJ)/recv_options.o $(OBJ)/flag_recv.o
 
 build: clean dep $(OBJS)
 		$(CC) -o $(BIN)/$(NAME) $(FLAGS) $(OBJS) $(INC) -lbauer
@@ -47,6 +47,12 @@ $(OBJ)/copy_options.o:
 
 $(OBJ)/output.o:
 		$(CC) -o $(OBJ)/output.o -c $(SRC)/util/output.cpp $(INC) $(FLAGS)
+
+$(OBJ)/recv_options.o:
+		$(CC) -o $(OBJ)/recv_options.o -c $(SRC)/pkg/recv_options.cpp $(INC) $(FLAGS)
+
+$(OBJ)/flag_recv.o:
+		$(CC) -o $(OBJ)/flag_recv.o -c $(SRC)/pkg/flag_recv.cpp $(INC) $(FLAGS)
 
 clean:
 		rm -rf $(OBJ) $(BIN)/$(NAME)
