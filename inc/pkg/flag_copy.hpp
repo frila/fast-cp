@@ -3,6 +3,7 @@
 
 #include "flag.hpp"
 #include "copy_options.hpp"
+#include "progress_bar.hpp"
 
 namespace fcp {
   class flag_copy : public flag {

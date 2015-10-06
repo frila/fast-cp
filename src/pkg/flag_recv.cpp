@@ -4,6 +4,7 @@
 void server_exec(bauer::bauer_tcp_channel channel) {
   fcp::flag_recv *flagrecv = (fcp::flag_recv *) channel.data;
   bauer::bauer_tcp_data_file file(flagrecv->get_destination());
+  file.set_recv_iter_function(fcp::progress_bar::print_bar);
   channel.recv(file);
 }
 
