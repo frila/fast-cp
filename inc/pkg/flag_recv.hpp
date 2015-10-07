@@ -3,6 +3,7 @@
 
 #include "flag.hpp"
 #include "recv_options.hpp"
+#include "progress_bar.hpp"
 
 namespace fcp {
   class flag_recv : public flag {

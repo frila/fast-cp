@@ -12,7 +12,7 @@ NAME=fast-cp
 INC=-I/opt/gtest/include -Iinc/util -Iinc/pkg -Iinc -Isrc/util -Isrc/pkg -Isrc 
 FLAGS=-std=c++11 -pthread
 
-OBJS=$(OBJ)/main.o $(OBJ)/arg_parser.o $(OBJ)/flag_mapper.o $(OBJ)/flag_copy.o $(OBJ)/flag_option.o $(OBJ)/flag_arguments.o $(OBJ)/copy_options.o $(OBJ)/flag.o $(OBJ)/output.o $(OBJ)/recv_options.o $(OBJ)/flag_recv.o
+OBJS=$(OBJ)/main.o $(OBJ)/arg_parser.o $(OBJ)/progress_bar.o $(OBJ)/flag_mapper.o $(OBJ)/flag_copy.o $(OBJ)/flag_option.o $(OBJ)/flag_arguments.o $(OBJ)/copy_options.o $(OBJ)/flag.o $(OBJ)/output.o $(OBJ)/recv_options.o $(OBJ)/flag_recv.o $(OBJ)/master.o $(OBJ)/slave.o
 
 build: clean dep $(OBJS)
 		$(CC) -o $(BIN)/$(NAME) $(FLAGS) $(OBJS) $(INC) -lbauer
@@ -26,6 +26,9 @@ $(OBJ)/main.o:
 
 $(OBJ)/arg_parser.o:
 		$(CC) -o $(OBJ)/arg_parser.o -c $(SRC)/util/arg_parser.cpp $(INC) $(FLAGS)
+
+$(OBJ)/progress_bar.o:
+		$(CC) -o $(OBJ)/progress_bar.o -c $(SRC)/util/progress_bar.cpp $(INC) $(FLAGS)
 
 $(OBJ)/flag.o:
 		$(CC) -o $(OBJ)/flag.o -c $(SRC)/pkg/flag.cpp $(INC) $(FLAGS)
@@ -53,6 +56,12 @@ $(OBJ)/recv_options.o:
 
 $(OBJ)/flag_recv.o:
 		$(CC) -o $(OBJ)/flag_recv.o -c $(SRC)/pkg/flag_recv.cpp $(INC) $(FLAGS)
+
+$(OBJ)/master.o:
+		$(CC) -o $(OBJ)/master.o -c $(SRC)/pkg/master.cpp $(INC) $(FLAGS)
+
+$(OBJ)/slave.o:
+		$(CC) -o $(OBJ)/slave.o -c $(SRC)/pkg/slave.cpp $(INC) $(FLAGS)
 
 clean:
 		rm -rf $(OBJ) $(BIN)/$(NAME)

@@ -49,25 +49,22 @@ void fcp::flag_copy::exec() {
   
   bauer::bauer_node server(bauer::tcp_socket(), ip, port);
   bauer::bauer_tcp_clnt client;
-  std::cout << "Connecting to " << ip << ":" << port << "\t\t";
+  std::cout << "Sending " << path <<  " to " << ip << ":" << port << std::endl;
 
   try {
     client.connect(server);
   } catch(bauer::bauer_socket_exception) {
-    std::cout << "ERROR" << std::endl;
-    std::cout << "Can't connect to server!" << std::endl; 
+    std::cout << "[ERROR] Destination is not available!" << std::endl; 
     exit(1);
   }
 
   std::cout << "Opening " << path << "\t\t";
   try {
     bauer::bauer_tcp_data_file file(path);
-    bauer::bauer_tcp_data_string pathdata = path;
-    client.send(pathdata);
-
+    file.set_send_iter_function(fcp::progress_bar::print_bar);
     client.send(file);
   } catch(bauer::bauer_exception) {
-    std::cout << "ERROR" << std::endl; 
+    std::cout << "[ERROR] File not found!" << std::endl; 
     exit(1);
   }
 }
