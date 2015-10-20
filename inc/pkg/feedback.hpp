@@ -8,7 +8,7 @@
 #include <iostream>
 
 namespace fcp{
-    class Feedback {
+    class feedback {
     public:
         static void log(std::string);
         static void warning(std::string);

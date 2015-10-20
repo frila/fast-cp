@@ -2,7 +2,7 @@
 // Created by fausto on 20/10/15.
 //
 
-#include "Feedback.hpp"
+#include "feedback.hpp"
 #include <cstdlib>
 #include <ctime>
 #include <ctype.h>
@@ -16,16 +16,16 @@ namespace fcp{
         return std::string("[") + str_now + std::string("]");
     }
 
-    void Feedback::log(std::string msg) {
+    void feedback::log(std::string msg) {
         std::cout << time_prefix() << " - " << msg << std::endl;
     }
 
-    void Feedback::warning(std::string msg) {
+    void feedback::warning(std::string msg) {
         std::cout << "\t*** WARNING *** " << std::endl;
         std::cout << time_prefix() << " - " << msg << std::endl;
     }
 
-    void Feedback::error(std::string msg, int code) {
+    void feedback::error(std::string msg, int code) {
         std::cout << "*** ERROR *** " << std::endl;
         std::cout << time_prefix() << " - " << msg << std::endl;
         std::exit(code);
