@@ -34,3 +34,9 @@ obj/
 # Ignoring vim .swp
 *.swp
 *.swo
+
+# Ignoring Clion
+.idea/*
+CMakeLists.txt
+exec.sh
+master.jpg

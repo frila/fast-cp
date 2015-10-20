@@ -1,7 +1,5 @@
 #include "flag.hpp"
 
-//std::vector<std::string> accepted_options = {};
-
 void fcp::flag::set_arguments(std::map<std::string, std::string> _arguments) {
   args = _arguments;
 }

@@ -1,3 +1,4 @@
+#include <iostream>
 #include "arg_parser.hpp"
 
 const int flag_position = 1;
@@ -32,7 +33,6 @@ fcp::flag_args fcp::arg_parser::flag_arguments(int argc, char* argv[]) {
   for(int i = arguments_position; i < argc; i++) {
     std::string arg(argv[i]);
     std::string next_arg = get_next_arg(argv[i+1]);
-
     if(arg.at(0) == '-') { 
       if(next_arg.size() > 0 && next_arg.at(0) != '-') {
         arguments.insert(std::pair<std::string, std::string>(arg, next_arg));
