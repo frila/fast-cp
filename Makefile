@@ -11,7 +11,7 @@ NAME=fast-cp
 
 INC=-I/opt/gtest/include -Iinc/util -Iinc/pkg -Iinc -Isrc/util -Isrc/pkg -Isrc 
 FLAGS=-std=c++11 -pthread
-OBJS=$(OBJ)/main.o $(OBJ)/arg_parser.o $(OBJ)/progress_bar.o $(OBJ)/flag_mapper.o $(OBJ)/flag_copy.o $(OBJ)/flag_option.o $(OBJ)/flag_arguments.o $(OBJ)/copy_options.o $(OBJ)/flag.o $(OBJ)/output.o $(OBJ)/recv_options.o $(OBJ)/flag_recv.o $(OBJ)/master.o $(OBJ)/slave.o $(OBJ)/replicate_option.o $(OBJ)/flag_replicate.o
+OBJS=$(OBJ)/main.o $(OBJ)/arg_parser.o $(OBJ)/progress_bar.o $(OBJ)/flag_mapper.o $(OBJ)/flag_copy.o $(OBJ)/flag_option.o $(OBJ)/flag_arguments.o $(OBJ)/copy_options.o $(OBJ)/flag.o $(OBJ)/output.o $(OBJ)/recv_options.o $(OBJ)/flag_recv.o $(OBJ)/master.o $(OBJ)/slave.o $(OBJ)/replicate_option.o $(OBJ)/flag_replicate.o $(OBJ)/Feedback.o
 
 build: clean dep $(OBJS)
 		$(CC) -o $(BIN)/$(NAME) $(FLAGS) $(OBJS) $(INC) -lbauer
@@ -67,6 +67,9 @@ $(OBJ)/replicate_option.o:
 
 $(OBJ)/flag_replicate.o:
 		$(CC) -o $(OBJ)/flag_replicate.o -c $(SRC)/pkg/flag_replicate.cpp $(INC) $(FLAGS)
+
+$(OBJ)/Feedback.o:
+		$(CC) -o $(OBJ)/Feedback.o -c $(SRC)/pkg/Feedback.cpp $(INC) $(FLAGS)
 
 clean:
 		rm -rf $(OBJ) $(BIN)/$(NAME)
